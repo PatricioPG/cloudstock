@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1,
+		"name": "Patricio Palacios",
+		"avatar": "neil-sims.png",
+		"email": "patricio.palacios@mail.com",
+		"biography": "I love working with React and Flowbites to create efficient and user-friendly interfaces. In my spare time, I enjoys baking, hiking, and spending time with my family.",
+		"position": "System Architect",
+		"country": "Mexico",
+		"status": "active"
+	}
+]

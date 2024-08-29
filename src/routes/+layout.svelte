@@ -1,49 +1,19 @@
 <script>
 	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
+	import Sidebar from './Sidebar.svelte';
 	import '../app.css';
 </script>
 
-<div class="app">
+<header
+	class="fixed top-0 z-40 mx-auto w-full flex-none border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-800"
+>
 	<Header />
+</header>
 
-	<main>
+<div class="overflow-hidden lg:flex">
+	<Sidebar />
+	<div class="relative h-full w-full overflow-y-auto lg:ml-64 pt-[70px]">
 		<slot />
-	</main>
+	</div>
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>

@@ -1,21 +1,18 @@
-<script>
-	import { Alert } from 'flowbite-svelte';
+<script lang="ts">
+	import type { PageData } from './$types';
+	import Dashboard from './utils/dashboard/Dashboard.svelte';
+	import MetaTag from './utils/MetaTag.svelte';
+
+	export let data: PageData;
+
+	const path: string = '';
+	const description: string = 'Admin Dashboard';
+	const title: string = 'CloudStock Admin Dashboard - Home';
+	const subtitle: string = 'Admin Dashboard';
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<MetaTag {path} {description} {title} {subtitle} />
 
-<div class="p-8">
-	<Alert>
-		<span class="font-medium">Info alert!</span>
-		Change a few things up and try submitting again.
-	</Alert>
-</div>
-
-<style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.100);
-	}
-</style>
+<main class="p-4">
+	<Dashboard {data} />
+</main>
