@@ -47,53 +47,37 @@
 	});
 
 	let posts = [
-		{ name: 'Dashboard', icon: ChartPieOutline, href: '/dashboard' },
+		{ name: 'Tablero', icon: ChartPieOutline, href: '/dashboard' },
 		{
-			name: 'Layouts',
-			icon: TableColumnSolid,
-			children: {
-				Stacked: '/layouts/stacked',
-				Sidebar: '/layouts/sidebar'
-			}
-		},
-		{
-			name: 'CRUD',
+			name: 'Catálogos',
 			icon: RectangleListSolid,
 			children: {
-				Products: '/crud/products',
-				Users: '/crud/users'
-			}
-		},
-		{ name: 'Settings', icon: CogOutline, href: '/settings' },
-		{
-			name: 'Pages',
-			icon: FileChartBarSolid,
-			children: {
-				Pricing: '/pages/pricing',
-				Maintenance: '/errors/400',
-				'404 not found': '/errors/404',
-				'500 server error': '/errors/500'
-			}
-		},
-		{
-			name: 'Authenication',
-			icon: LockSolid,
-			children: {
-				'Sign in': '/authentication/sign-in',
-				'Sign up': '/authentication/sign-up',
-				'Forgot password': '/authentication/forgot-password',
-				'Reset password': '/authentication/reset-password',
-				'Profile lock': '/authentication/profile-lock'
-			}
-		},
-		{
-			name: 'Playground',
-			icon: WandMagicSparklesOutline,
-			children: {
-				Stacked: '/playground/stacked',
-				Sidebar: '/playground/sidebar'
+				Productos: '/catalogs/products',
+				Categorías: '/catalogs/categories'
 			}
 		}
+		// { name: 'Settings', icon: CogOutline, href: '/settings' },
+		// {
+		// 	name: 'Pages',
+		// 	icon: FileChartBarSolid,
+		// 	children: {
+		// 		Pricing: '/pages/pricing',
+		// 		Maintenance: '/errors/400',
+		// 		'404 not found': '/errors/404',
+		// 		'500 server error': '/errors/500'
+		// 	}
+		// },
+		// {
+		// 	name: 'Authenication',
+		// 	icon: LockSolid,
+		// 	children: {
+		// 		'Sign in': '/authentication/sign-in',
+		// 		'Sign up': '/authentication/sign-up',
+		// 		'Forgot password': '/authentication/forgot-password',
+		// 		'Reset password': '/authentication/reset-password',
+		// 		'Profile lock': '/authentication/profile-lock'
+		// 	}
+		// }
 	];
 
 	let links = [
@@ -163,7 +147,7 @@
 					{/if}
 				{/each}
 			</SidebarGroup>
-			<SidebarGroup ulClass={groupClass}>
+			<!-- <SidebarGroup ulClass={groupClass}>
 				{#each links as { label, href, icon } (label)}
 					<SidebarItem
 						{label}
@@ -176,7 +160,7 @@
 						<svelte:component this={icon} slot="icon" class={iconClass} />
 					</SidebarItem>
 				{/each}
-			</SidebarGroup>
+			</SidebarGroup> -->
 		</nav>
 	</SidebarWrapper>
 </Sidebar>
