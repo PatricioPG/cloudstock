@@ -23,7 +23,7 @@ export const GET: RequestHandler = async ({ params }) => {
 				attributes: {
 					name: product.name,
 					content: product.content,
-					content_type: product.content_type,
+					contentType: product.contentType,
 					category: product.category
 				}
 			}
@@ -38,7 +38,7 @@ const getProductById = async (id: string): Promise<Product | null> => {
 		id: '',
 		name: '',
 		content: 0,
-		content_type: '',
+		contentType: '',
 		category: ''
 	};
 
@@ -59,7 +59,7 @@ const getProductById = async (id: string): Promise<Product | null> => {
 	product.id = dbData[0]['product_id'];
 	product.name = dbData[0]['name'];
 	product.content = dbData[0]['content'];
-	product.content_type = dbData[0]['content_name'];
+	product.contentType = dbData[0]['content_name'];
 	product.category = dbData[0]['category_name'];
 
 	return product;

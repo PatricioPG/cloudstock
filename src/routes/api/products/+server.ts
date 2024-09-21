@@ -17,7 +17,7 @@ export const GET: RequestHandler = async () => {
 				attributes: {
 					name: product.name,
 					content: product.content,
-					content_type: product.content_type,
+					contentType: product.contentType,
 					category: product.category
 				}
 			}))
@@ -45,7 +45,7 @@ const getProducts = async (): Promise<Product[] | null> => {
 		id: row.id,
 		name: row.name,
 		content: row.content,
-		content_type: row.content_name,
+		contentType: row.content_name,
 		category: row.category_name
 	}));
 };
