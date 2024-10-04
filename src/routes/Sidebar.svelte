@@ -53,7 +53,8 @@
 			icon: RectangleListSolid,
 			children: {
 				Productos: '/catalogs/products',
-				Categorías: '/catalogs/categories'
+				Categorías: '/catalogs/categories',
+				'Tipos de Contenido': '/catalogs/contentTypes'
 			}
 		}
 		// { name: 'Settings', icon: CogOutline, href: '/settings' },

@@ -4,28 +4,28 @@
 	import { onMount } from 'svelte';
 
 	export let hidden: boolean = true;
-	export let categoryId: string | null = null;
-	export let fetchCategories: () => Promise<void>;
+	export let contentTypeId: string | null = null;
+	export let fetchContentTypes: () => Promise<void>;
 
 	let name: string = '';
 
 	onMount(async () => {
 		//Fetch category data if cateryId is provided
-		if (categoryId) {
-			const response = await fetch(`/api/categories/${categoryId}`);
+		if (contentTypeId) {
+			const response = await fetch(`/api/contentTypes/${contentTypeId}`);
 			const data = await response.json();
-			const category = data.data.attributes;
+			const contentType = data.data.attributes;
 
-			name = category.name;
+			name = contentType.name;
 		}
 	});
 
 	const handleSubmit = async (event: Event) => {
 		event.preventDefault();
 
-		const category = { name };
-		const method = categoryId ? 'PUT' : 'POST';
-		const url = categoryId ? `/api/categories/${categoryId}` : '/api/categories';
+		const contentType = { name };
+		const method = contentTypeId ? 'PUT' : 'POST';
+		const url = contentTypeId ? `/api/contentTypes/${contentTypeId}` : '/api/contentTypes';
 
 		try {
 			const response = await fetch(url, {
@@ -33,12 +33,12 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(category)
+				body: JSON.stringify(contentType)
 			});
 
 			if (response.ok) {
-				alert('¡Categoría guardada!');
-				await fetchCategories();
+				alert('Tipo de contenido guardado!');
+				await fetchContentTypes();
 				hidden = true;
 			} else {
 				const errorData = await response.json();
@@ -51,7 +51,9 @@
 	};
 </script>
 
-<Heading tag="h5" class="mb-6 text-sm font-semibold uppercase">Add new category</Heading>
+<Heading tag="h5" class="mb-6 text-sm font-semibold uppercase"
+	>Agregar nuevo tipo de contenido</Heading
+>
 <CloseButton
 	on:click={() => (hidden = true)}
 	class="absolute right-2.5 top-2.5 text-gray-400 hover:text-black dark:text-white"

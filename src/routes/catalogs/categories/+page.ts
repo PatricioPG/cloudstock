@@ -1,7 +1,7 @@
 import type { PageLoad } from './$types';
 
 export const load = (async ({ fetch }) => {
-	const response = await fetch('/api/products/categories');
+	const response = await fetch('/api/categories');
 
 	const json = await response.json();
 

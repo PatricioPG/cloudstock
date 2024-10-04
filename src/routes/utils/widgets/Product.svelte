@@ -2,17 +2,11 @@
 	import { Button, CloseButton, Heading, Input, Label, Select } from 'flowbite-svelte';
 	import { CloseOutline } from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
-	import Category from './Category.svelte';
+	import type { SelectItems } from '../../../types/selectIems';
 
 	export let hidden: boolean = true;
 	export let productId: string | null = null;
 	export let fetchProducts: () => Promise<void>;
-
-	interface SelectItems {
-		value: string;
-		name: string;
-	}
 
 	let name: string = '';
 	let content: string = '';

@@ -23,7 +23,9 @@ export const GET: RequestHandler = async ({ params }) => {
 				attributes: {
 					name: product.name,
 					content: product.content,
-					content_type: product.content_type,
+					contentTypeId: product.contentTypeId,
+					contentType: product.contentType,
+					categoryId: product.categoryId,
 					category: product.category
 				}
 			}))
@@ -42,7 +44,9 @@ const getProductsByCategory = async (id: string): Promise<Product[] | null> => {
 			'product.product_id',
 			'product.name',
 			'product.content',
+			'content_type.content_type_id',
 			'content_type.content_name',
+			'category.category_id',
 			'category.category_name'
 		);
 
@@ -52,7 +56,9 @@ const getProductsByCategory = async (id: string): Promise<Product[] | null> => {
 		id: row.id,
 		name: row.name,
 		content: row.content,
+		contentTypeId: row.content_type_id,
 		content_type: row.content_name,
+		categoryId: row.category_id,
 		category: row.category_name
 	}));
 };

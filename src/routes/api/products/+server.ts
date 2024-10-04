@@ -121,7 +121,7 @@ const saveProduct = async (product: Product): Promise<Product | null> => {
 			category: newProduct.category_name
 		};
 	} catch (error) {
-		console.error('Ocurrió un error al guardar el producto', error);
+		console.error('Ocurrió un error al guardar el producto ', error);
 		return null;
 	}
 };

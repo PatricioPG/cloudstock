@@ -39,8 +39,6 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 	const { name, content, contentTypeId, categoryId } = await request.json();
 	const { productId } = params;
 
-	console.log(productId);
-
 	if (
 		!name ||
 		!content ||
