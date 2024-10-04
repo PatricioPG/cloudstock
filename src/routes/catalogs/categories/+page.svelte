@@ -64,18 +64,16 @@
 <main class="relative h-full w-full overflow-y-auto bg-white dark:bg-gray-800">
 	<div class="p-4">
 		<Breadcrumb class="mb-5">
-			<BreadcrumbItem home>Home</BreadcrumbItem>
-			<BreadcrumbItem>Categories</BreadcrumbItem>
+			<BreadcrumbItem home>Inicio</BreadcrumbItem>
+			<BreadcrumbItem>Categorías</BreadcrumbItem>
 		</Breadcrumb>
 		<Heading tag="h1" class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl"
 			>Categorías</Heading
 		>
 		<Toolbar embedded class="w-full py-4 text-gray-500 dark:text-gray-400">
-			<Input placeholder="Buscar una categoría" class="me-6 w-80 border xl:w-96" />
-			<div class="space-x-2" slot="end">
-				<Button class="whitespace-nowrap" on:click={() => toggle(Category)}
-					>Agregar nueva categoría</Button
-				>
+			<!-- <Input placeholder="Buscar una categoría" class="me-6 w-80 border xl:w-96" /> -->
+			<div class="space-x-2">
+				<Button class="whitespace-nowrap" on:click={() => toggle(Category)}>Nueva categoría</Button>
 			</div>
 		</Toolbar>
 	</div>
@@ -124,5 +122,6 @@
 		itemId={selectedCategoryId}
 		itemType="categories"
 		fetchItems={fetchCategories}
+		{fetchCategories}
 	/>
 </Drawer>

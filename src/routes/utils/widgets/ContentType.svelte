@@ -14,7 +14,7 @@
 		if (contentTypeId) {
 			const response = await fetch(`/api/contentTypes/${contentTypeId}`);
 			const data = await response.json();
-			const contentType = data.data.attributes;
+			const contentType = data.attributes;
 
 			name = contentType.name;
 		}
@@ -52,14 +52,14 @@
 </script>
 
 <Heading tag="h5" class="mb-6 text-sm font-semibold uppercase"
-	>Agregar nuevo tipo de contenido</Heading
+	>{contentTypeId ? 'Editar tipo de contenido' : 'Nuevo de contenido'}</Heading
 >
 <CloseButton
 	on:click={() => (hidden = true)}
 	class="absolute right-2.5 top-2.5 text-gray-400 hover:text-black dark:text-white"
 />
 
-<form action="#">
+<form on:submit={handleSubmit}>
 	<div class="space-y-4">
 		<Label class="space-y-2">
 			<span>Nombre</span>

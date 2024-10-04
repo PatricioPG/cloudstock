@@ -4,19 +4,19 @@
 	import { onMount } from 'svelte';
 
 	export let hidden: boolean = true;
-	export let categoryId: string | null = null;
-	export let fetchCategories: () => Promise<void>;
+	export let routeId: string | null = null;
+	export let fetchRoutes: () => Promise<void>;
 
 	let name: string = '';
 
 	onMount(async () => {
 		//Fetch category data if categoryId is provided
-		if (categoryId) {
-			const response = await fetch(`/api/categories/${categoryId}`);
+		if (routeId) {
+			const response = await fetch(`/api/routes/${routeId}`);
 			const data = await response.json();
-			const category = data.attributes;
+			const route = data.attributes;
 
-			name = category.name;
+			name = route.name;
 		}
 	});
 
@@ -24,8 +24,8 @@
 		event.preventDefault();
 
 		const category = { name };
-		const method = categoryId ? 'PUT' : 'POST';
-		const url = categoryId ? `/api/categories/${categoryId}` : '/api/categories';
+		const method = routeId ? 'PUT' : 'POST';
+		const url = routeId ? `/api/routes/${routeId}` : '/api/routes';
 
 		try {
 			const response = await fetch(url, {
@@ -37,8 +37,8 @@
 			});
 
 			if (response.ok) {
-				alert('¡Categoría guardada!');
-				await fetchCategories();
+				alert('Ruta guardada!');
+				await fetchRoutes();
 				hidden = true;
 			} else {
 				const errorData = await response.json();
@@ -52,7 +52,7 @@
 </script>
 
 <Heading tag="h5" class="mb-6 text-sm font-semibold uppercase"
-	>{categoryId ? 'Editar categoría' : 'Nueva categoría'}</Heading
+	>{routeId ? 'Editar ruta' : 'Nueva ruta'}</Heading
 >
 <CloseButton
 	on:click={() => (hidden = true)}
@@ -66,7 +66,7 @@
 			<Input
 				name="name"
 				class="border font-normal outline-none"
-				placeholder="Ingrese el nombre de la categoría"
+				placeholder="Ingrese el nombre/alias de la ruta"
 				required
 				bind:value={name}
 			/>

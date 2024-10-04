@@ -17,7 +17,7 @@
 
 	onMount(async () => {
 		//Fetch categories
-		const categoriesResponse = await fetch('/api/products/categories');
+		const categoriesResponse = await fetch('/api/categories');
 		const categoriesData = await categoriesResponse.json();
 		categories = categoriesData.data.map((category: any) => ({
 			value: String(category.id),
@@ -25,7 +25,7 @@
 		}));
 
 		//Fetch contentTypes
-		const contentTypesResponse = await fetch('/api/products/contentTypes');
+		const contentTypesResponse = await fetch('/api/contentTypes');
 		const contentTypesData = await contentTypesResponse.json();
 		contentTypes = contentTypesData.data.map((contentType: any) => ({
 			value: String(contentType.id),
@@ -78,7 +78,7 @@
 </script>
 
 <Heading tag="h5" class="mb-6 text-sm font-semibold uppercase"
-	>{productId ? 'Editar producto' : 'Agregar producto'}</Heading
+	>{productId ? 'Editar producto' : 'Nuevo producto'}</Heading
 >
 <CloseButton
 	on:click={() => (hidden = true)}

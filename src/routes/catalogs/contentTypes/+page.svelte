@@ -64,17 +64,17 @@
 <main class="relative h-full w-full overflow-y-auto bg-white dark:bg-gray-800">
 	<div class="p-4">
 		<Breadcrumb class="mb-5">
-			<BreadcrumbItem home>Home</BreadcrumbItem>
-			<BreadcrumbItem>Content Types</BreadcrumbItem>
+			<BreadcrumbItem home>Inicio</BreadcrumbItem>
+			<BreadcrumbItem>Tipos de contenido</BreadcrumbItem>
 		</Breadcrumb>
 		<Heading tag="h1" class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl"
 			>Tipos de Contenido</Heading
 		>
 		<Toolbar embedded class="w-full py-4 text-gray-500 dark:text-gray-400">
-			<Input placeholder="Buscar una categoría" class="me-6 w-80 border xl:w-96" />
-			<div class="space-x-2" slot="end">
+			<!-- <Input placeholder="Buscar una categoría" class="me-6 w-80 border xl:w-96" /> -->
+			<div class="space-x-2">
 				<Button class="whitespace-nowrap" on:click={() => toggle(ContentType)}
-					>Agregar nuevo tipo de contenido</Button
+					>Nuevo tipo de contenido</Button
 				>
 			</div>
 		</Toolbar>
@@ -124,9 +124,10 @@
 	<svelte:component
 		this={drawerComponent}
 		bind:hidden
-		categoryId={selectedContentTypeId}
+		contentTypeId={selectedContentTypeId}
 		itemId={selectedContentTypeId}
 		itemType="contentTypes"
 		fetchItems={fetchContentTypes}
+		{fetchContentTypes}
 	/>
 </Drawer>
