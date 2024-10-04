@@ -31,10 +31,21 @@
 
 	let hidden: boolean = true;
 	let drawerComponent: ComponentType = Product;
+	let selectedProductId: string | null = null;
 
-	const toggle = (component: ComponentType) => {
+	const toggle = (component: ComponentType, productId: string | null = null) => {
 		drawerComponent = component;
+		selectedProductId = productId;
 		hidden = !hidden;
+	};
+
+	const fetchProducts = async () => {
+		const response = await fetch('/api/products');
+		const data = await response.json();
+		products = data.data.map((product: any) => ({
+			id: product.id,
+			...product.attributes
+		}));
 	};
 
 	const path: string = '/catalogs/products';
@@ -91,10 +102,15 @@
 					</TableBodyCell>
 					<TableBodyCell class="p-4">{product.content} {product.contentType}</TableBodyCell>
 					<TableBodyCell class="space-x-2">
-						<Button size="sm" class="gap-2 px-3" on:click={() => toggle(Product)}>
+						<Button size="sm" class="gap-2 px-3" on:click={() => toggle(Product, product.id)}>
 							<EditOutline size="sm" /> Editar
 						</Button>
-						<Button size="sm" color="red" class="gap-2 px-3" on:click={() => toggle(Delete)}>
+						<Button
+							size="sm"
+							color="red"
+							class="gap-2 px-3"
+							on:click={() => toggle(Delete, product.id)}
+						>
 							<TrashBinSolid size="sm" /> Borrar
 						</Button>
 					</TableBodyCell>
@@ -105,5 +121,10 @@
 </main>
 
 <Drawer placement="right" transitionType="fly" {transitionParams} bind:hidden>
-	<svelte:component this={drawerComponent} bind:hidden />
+	<svelte:component
+		this={drawerComponent}
+		bind:hidden
+		productId={selectedProductId}
+		{fetchProducts}
+	/>
 </Drawer>
