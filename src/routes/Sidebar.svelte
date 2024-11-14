@@ -12,16 +12,12 @@
 		AngleDownOutline,
 		AngleUpOutline,
 		ClipboardListSolid,
-		CogOutline,
-		FileChartBarSolid,
 		GithubSolid,
 		LayersSolid,
 		LifeSaverSolid,
-		LockSolid,
-		WandMagicSparklesOutline,
 		ChartPieOutline,
 		RectangleListSolid,
-		TableColumnSolid
+		FileCheckOutline
 	} from 'flowbite-svelte-icons';
 
 	export let drawerHidden: boolean = false;
@@ -56,7 +52,8 @@
 				Categorías: '/catalogs/categories',
 				'Tipos de Contenido': '/catalogs/contentTypes'
 			}
-		}
+		},
+		{ name: 'Rutas', icon: FileCheckOutline, href: '/pages/routes' }
 		// { name: 'Settings', icon: CogOutline, href: '/settings' },
 		// {
 		// 	name: 'Pages',
